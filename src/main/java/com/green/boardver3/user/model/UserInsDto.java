@@ -1,6 +1,9 @@
 package com.green.boardver3.user.model;
 
-public class UserInsDto extends UserEntity {
+import lombok.Data;
+
+@Data
+public class UserInsDto {
     private String uid;
     private String upw;
     private String nm;
