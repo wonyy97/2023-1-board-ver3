@@ -5,8 +5,8 @@
 <mapper namespace="com.green.boardver3.UserMapper">
     <insert id="insUser">
         INSERT INTO t_user
-        (upw, nm, gender, addr)
+        (uid, upw, nm, gender, addr)
         VALUES
-        (#{upw}, #{nm}, #{gender}, #{addr})
+        (#{uid}, #{upw}, #{nm}, #{gender}, #{addr})
     </insert>
 </mapper>
