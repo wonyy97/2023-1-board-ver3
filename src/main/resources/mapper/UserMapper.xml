@@ -5,9 +5,12 @@
 <mapper namespace="com.green.boardver3.user.UserMapper">
     <insert id="insUser">
         INSERT INTO t_user
-        (uid, upw, nm, gender, addr)
-        VALUES
-        (#{uid}, #{upw}, #{nm}, #{gender}, #{addr})
+        SET uid = #{uid}
+        , upw = #{upw}
+        , nm = #{nm}
+        , gender = #{gender}
+        , addr = #{addr}
+
     </insert>
 
     <select id="selUserByUid" resultType="UserLoginVo">
@@ -15,6 +18,12 @@
         FROM t_user
         WHERE uid = #{uid}  <!-- uid값이 유니크라서  -->
     </select>
+
+    <update id="updUserPw">
+        UPDATE t_user
+        SET upw = #{upw}
+        WHERE iuser = #{iuser}
+    </update>
 
 
 </mapper>

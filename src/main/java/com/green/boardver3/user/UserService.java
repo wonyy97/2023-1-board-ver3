@@ -1,13 +1,9 @@
 package com.green.boardver3.user;
 
-import com.green.boardver3.user.model.UserInsDto;
-import com.green.boardver3.user.model.UserLoginDto;
-import com.green.boardver3.user.model.UserLoginVo;
+import com.green.boardver3.user.model.*;
 import com.green.boardver3.utils.CommonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 //최대한 자바단에서 다 잡기
 
@@ -55,14 +51,14 @@ public class UserService {
         return 3;
     }
 
+    public int updUserPw(UserPatchPwDto dto) {
+        String hashPw = commonUtils.encodeSha256(dto.getUpw());
+        dto.setUpw(hashPw);
+        return mapper.updUserPw(dto);
+    }
+
+
 }
-
-
-
-
-
-
-
 
 
 
