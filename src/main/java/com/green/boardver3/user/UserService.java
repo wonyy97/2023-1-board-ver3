@@ -42,7 +42,7 @@ public class UserService {
     }
 
     @PostMapping("/login")
-    public int postLofinUser(@RequestBody UserLoginDto dto) {
+    public int postLoginUser(@RequestBody UserLoginDto dto) {
         return 0;
     }
 
