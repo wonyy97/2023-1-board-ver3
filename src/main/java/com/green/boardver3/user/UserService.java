@@ -1,9 +1,12 @@
 package com.green.boardver3.user;
 
 import com.green.boardver3.user.model.UserInsDto;
+import com.green.boardver3.user.model.UserLoginDto;
 import com.green.boardver3.utils.CommonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 //최대한 자바단에서 다 잡기
 
@@ -36,6 +39,15 @@ public class UserService {
             e.printStackTrace();
             return 0;
         }
+    }
+
+    @PostMapping("/login")
+    public int postLofinUser(@RequestBody UserLoginDto dto) {
+        return 0;
+    }
+
+    public int login(UserLoginDto dto) {
+        return 0;
     }
 
 }
