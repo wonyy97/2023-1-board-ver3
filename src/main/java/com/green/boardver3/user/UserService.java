@@ -2,6 +2,7 @@ package com.green.boardver3.user;
 
 import com.green.boardver3.user.model.UserInsDto;
 import com.green.boardver3.user.model.UserLoginDto;
+import com.green.boardver3.user.model.UserLoginVo;
 import com.green.boardver3.utils.CommonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,7 +43,40 @@ public class UserService {
     }
 
     public int login(UserLoginDto dto) {
-        return 0;
+        UserLoginVo vo = mapper.selUserByUid(dto);
+        if(vo == null) {
+            return 2;
+        }
+
+        String pw = commonUtils.encodeSha256(dto.getUpw());
+        if(vo.getUpw().equals(pw)){
+            return 1;
+        }
+        return 3;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
