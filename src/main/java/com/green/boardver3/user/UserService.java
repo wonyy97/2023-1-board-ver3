@@ -17,6 +17,11 @@ public class UserService {
         this.commonUtils = commonUtils;
     }
     public int insUser(UserInsDto dto) {
+        //성별 항상 대문자로 받기
+        char gender = Character.toUpperCase(dto.getGender());
+        dto.setGender(gender);
+
+        //비밀번호 암호화
         String hashPw = commonUtils.encodeSha256(dto.getUpw());
         dto.setUpw(hashPw);
         return mapper.insUser(dto);
