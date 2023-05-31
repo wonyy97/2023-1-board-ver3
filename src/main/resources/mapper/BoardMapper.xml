@@ -19,5 +19,10 @@
         LIMIT ${startIdx}, ${rowLen}
     </select>
 
+    <select id="selLastBoard" resultType="int">
+        SELECT CEIL(COUNT(*) / ${rowLen}) max
+        FROM t_board
+    </select>
+
 
 </mapper>

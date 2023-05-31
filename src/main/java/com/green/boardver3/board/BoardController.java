@@ -2,6 +2,7 @@ package com.green.boardver3.board;
 
 import com.green.boardver3.board.model.BoardSelDto;
 import com.green.boardver3.board.model.BoardInsDto;
+import com.green.boardver3.board.model.BoardSelLastDto;
 import com.green.boardver3.board.model.BoardVo;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.constraints.Min;
@@ -30,11 +31,15 @@ public class BoardController {
     @GetMapping
     public List<BoardVo> getBoard(@RequestParam(defaultValue = "1") int page
             , @RequestParam(defaultValue = "30") int row) {
-        BoardSelDto dto = BoardSelDto.builder()
-                .page(page)
-                .rowLen(row)
-                .build();
+        BoardSelDto dto = new BoardSelDto();
+        dto.setPage(page);
+        dto.setRowLen(row);
         return service.selBoard(dto);
+    }
+
+    @GetMapping("/maxpage")
+    public int getLastBoard(@RequestParam int row) {
+        return service.selLastBoard(row);
     }
 
 }
