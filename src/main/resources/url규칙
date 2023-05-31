@@ -17,6 +17,7 @@
 (post) 글등록
 (put) 글수정
 (delete) 글삭제
+{iboard, iuser}
 
 /board/cmt
 (post) 댓글 등록
