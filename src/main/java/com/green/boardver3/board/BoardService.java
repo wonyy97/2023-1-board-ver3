@@ -28,7 +28,7 @@ public class BoardService {
     }
 
     public int selLastBoard(int row) {
-        int count = mapper.selLastBoard(row);
+        double count = mapper.selLastBoard(row);
         return (int)Math.ceil(count/ row);
     }
 }
