@@ -32,4 +32,8 @@ public class BoardService {
     public BoardDetailVo selboardByid(BoardSelDto dto) {
         return mapper.selBoardById(dto);
     }
+
+    public int delBoard(BoardDto dto) {
+        return mapper.delBoard(dto);
+    }
 }
