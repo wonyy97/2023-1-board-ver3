@@ -33,7 +33,7 @@ public class BoardService {
         return mapper.selBoardById(dto);
     }
 
-    public int delBoard(BoardDto dto) {
+    public int delBoard(BoardDelDto dto) {
         return mapper.delBoard(dto);
     }
 }
