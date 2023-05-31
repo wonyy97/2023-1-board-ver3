@@ -1,6 +1,6 @@
 package com.green.boardver3.board;
 
-import com.green.boardver3.board.model.BoardDto;
+import com.green.boardver3.board.model.BoardSelDto;
 import com.green.boardver3.board.model.BoardInsDto;
 import com.green.boardver3.board.model.BoardVo;
 import io.swagger.v3.oas.annotations.Operation;
@@ -26,12 +26,14 @@ public class BoardController {
         return service.insBoard(dto);
     }
 
+
     @GetMapping
-    public List<BoardVo> getSelBoard(@RequestParam @Min(value = 1, message = "1 이상") int page,
-                                     @RequestParam (defaultValue = "30") int row) {
-        BoardDto dto = new BoardDto();
-        dto.setPage(page);
-        dto.setRowLen(row);
+    public List<BoardVo> getBoard(@RequestParam(defaultValue = "1") int page
+            , @RequestParam(defaultValue = "30") int row) {
+        BoardSelDto dto = BoardSelDto.builder()
+                .page(page)
+                .rowLen(row)
+                .build();
         return service.selBoard(dto);
     }
 

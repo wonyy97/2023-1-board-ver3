@@ -1,6 +1,6 @@
 package com.green.boardver3.board;
 
-import com.green.boardver3.board.model.BoardDto;
+import com.green.boardver3.board.model.BoardSelDto;
 import com.green.boardver3.board.model.BoardInsDto;
 import com.green.boardver3.board.model.BoardVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class BoardService {
         return mapper.insBoard(dto);
     }
 
-    public List<BoardVo> selBoard(BoardDto dto){
+    public List<BoardVo> selBoard(BoardSelDto dto){
         dto.setStartIdx((dto.getPage()-1) * dto.getRowLen());
         return mapper.selBoard(dto);
     }

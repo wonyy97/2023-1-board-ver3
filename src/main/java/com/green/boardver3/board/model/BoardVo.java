@@ -6,8 +6,8 @@ import lombok.Data;
 public class BoardVo {
     private int iboard;
     private String title;
-    private int iuser;
     private String createdAt;
+    private String writer;
 
 
 }

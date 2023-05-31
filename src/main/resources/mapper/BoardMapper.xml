@@ -11,8 +11,10 @@
     </insert>
 
     <select id="selBoard" resultType="BoardVo">
-        SELECT iboard, title, iuser, created_at createdAt
-        FROM t_board
+        SELECT a.iboard, a.title, a.created_at, b.nm writer
+        FROM t_board a
+        INNER JOIN t_user b
+        ON a.iuser = b.iuser
         ORDER BY iboard DESC
         LIMIT ${startIdx}, ${rowLen}
     </select>
