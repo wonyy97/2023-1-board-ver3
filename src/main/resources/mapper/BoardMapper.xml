@@ -42,8 +42,6 @@
         UPDATE t_board
         SET title = #{title}
         , ctnt = #{ctnt}
-        , iboard = #{iboard}
-        ,iuser = #{iuser}
         ,updated_at = current_timestamp()
         WHERE iboard = ${iboard} AND iuser = ${iuser}
     </update>
