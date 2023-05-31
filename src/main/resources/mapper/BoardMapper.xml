@@ -20,7 +20,7 @@
     </select>
 
     <select id="selLastBoard" resultType="int">
-        SELECT CEIL(COUNT(*) / ${rowLen}) max
+        SELECT COUNT(*) max
         FROM t_board
     </select>
 

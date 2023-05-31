@@ -22,15 +22,13 @@ public class BoardService {
         return mapper.insBoard(dto);
     }
 
-    public List<BoardVo> selBoard(BoardSelDto dto){
-        dto.setStartIdx((dto.getPage()-1) * dto.getRowLen());
+    public List<BoardVo> selBoard(BoardSelDto dto) {
+        dto.setStartIdx((dto.getPage() - 1) * dto.getRowLen());
         return mapper.selBoard(dto);
     }
 
-    public int selLastBoard(int row){
-//        double i = mapper.selLastBoard();
-//        int b =(int)Math.ceil(i/ dto.getRowLen());
-//        return b;
-        return mapper.selLastBoard(row);
+    public int selLastBoard(int row) {
+        int count = mapper.selLastBoard(row);
+        return (int)Math.ceil(count/ row);
     }
 }
