@@ -21,7 +21,7 @@ public class BoardController {
     }
 
     @PostMapping
-    @Operation(summary = "글등록", description = "<h1>글 등록 가능해요</h1> <br> ୧(๑•̀ᗝ•́)૭")
+    @Operation(summary = "글등록", description = "<h1>글 등록 가능해요</h1> <br> <h2> ୧(๑•̀ᗝ•́)૭ </h2>")
     public int postInsBoard(@RequestBody BoardInsDto dto) {
         return service.insBoard(dto);
     }
