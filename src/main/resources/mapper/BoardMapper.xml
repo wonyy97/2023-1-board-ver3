@@ -25,7 +25,7 @@
     </select>
 
     <select id="selBoardById" resultType="BoardDetailVo">
-        SELECT iboard, title, ctnt, writer, created_at createdAt, updated_at updatedAt
+        SELECT iboard, title, ctnt, iuser writer, created_at createdAt, updated_at updatedAt
         FROM t_board
         WHERE iboard = #{iboard}
     </select>
