@@ -46,7 +46,7 @@ public class BoardController {
         return service.selboardByid(dto);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{iboard}")
     public int deleteBoard(@RequestParam int iboard, @RequestParam int iuser) {
         BoardDto dto = new BoardDto();
         dto.setIboard(iboard);
