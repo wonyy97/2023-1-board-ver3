@@ -9,5 +9,5 @@ public class BoardDetailVo {
     private String ctnt;
     private String writer;
     private String createdAt;
-    private String updatedAt;
+    private String writerMainPic;
 }

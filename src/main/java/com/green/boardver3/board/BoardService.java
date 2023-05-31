@@ -29,7 +29,7 @@ public class BoardService {
         return (int)Math.ceil(count/ row);
     }
 
-    public BoardDetailVo selboardByid(BoardDto dto) {
+    public BoardDetailVo selboardByid(BoardSelDto dto) {
         return mapper.selBoardById(dto);
     }
 }

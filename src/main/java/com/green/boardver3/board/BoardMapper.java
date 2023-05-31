@@ -10,5 +10,5 @@ public interface BoardMapper {
     int insBoard(BoardInsDto dto);
     List<BoardVo> selBoard(BoardSelDto dto);
     int selLastBoard(int row);
-    BoardDetailVo selBoardById(BoardDto dto);
+    BoardDetailVo selBoardById(BoardSelDto dto);
 }
