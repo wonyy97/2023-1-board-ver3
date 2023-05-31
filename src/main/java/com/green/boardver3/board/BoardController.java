@@ -54,4 +54,9 @@ public class BoardController {
         return service.delBoard(dto);
     }
 
+    @PutMapping
+    public int updateBoard(@RequestBody BoardUpdDto dto) {
+        return service.updBoard(dto);
+    }
+
 }
