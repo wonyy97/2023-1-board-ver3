@@ -8,6 +8,5 @@ public class BoardVo {
     private String title;
     private String createdAt;
     private String writer;
-
-
+    private String writerMainPic;
 }
