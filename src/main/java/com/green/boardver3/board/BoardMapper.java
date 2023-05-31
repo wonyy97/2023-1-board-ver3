@@ -12,4 +12,5 @@ public interface BoardMapper {
     int selLastBoard(int row);
     BoardDetailVo selBoardById(BoardSelDto dto);
     int delBoard(BoardDelDto dto);
+    int updBoard(BoardDto dto);
 }

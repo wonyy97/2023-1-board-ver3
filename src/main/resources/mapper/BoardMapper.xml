@@ -38,4 +38,13 @@
         WHERE iboard = ${iboard} AND iuser = ${iuser}
     </delete>
 
+    <update id="updBoard">
+        UPDATE t_board
+        SET title = #{title}
+        , ctnt = #{ctnt}
+        , iboard = #{iboard}
+        ,iuser = #{iuser}
+        WHERE iboard = ${iboard} AND iuser = ${iuser}
+    </update>
+
 </mapper>
