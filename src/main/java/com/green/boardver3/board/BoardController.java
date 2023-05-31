@@ -1,9 +1,6 @@
 package com.green.boardver3.board;
 
-import com.green.boardver3.board.model.BoardSelDto;
-import com.green.boardver3.board.model.BoardInsDto;
-import com.green.boardver3.board.model.BoardSelLastDto;
-import com.green.boardver3.board.model.BoardVo;
+import com.green.boardver3.board.model.*;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.constraints.Min;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +37,13 @@ public class BoardController {
     @GetMapping("/maxpage")
     public int getLastBoard(@RequestParam int row) {
         return service.selLastBoard(row);
+    }
+
+    @GetMapping("/{iboard}")
+    public BoardDetailVo getdetailBoard(@PathVariable int iboard) {
+        BoardDto dto = new BoardDto();
+        dto.setIboard(iboard);
+        return service.selboardByid(dto);
     }
 
 }

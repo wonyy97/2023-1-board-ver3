@@ -11,7 +11,7 @@
     </insert>
 
     <select id="selBoard" resultType="BoardVo">
-        SELECT a.iboard, a.title, a.created_at, b.nm writer, a.main_pic writerMainPic
+        SELECT a.iboard, a.title, a.created_at, b.nm writer, b.main_pic writerMainPic
         FROM t_board a
         INNER JOIN t_user b
         ON a.iuser = b.iuser
