@@ -3,6 +3,7 @@ package com.green.boardver3.board;
 import com.green.boardver3.board.model.BoardDto;
 import com.green.boardver3.board.model.BoardInsDto;
 import com.green.boardver3.board.model.BoardVo;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.constraints.Min;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,7 @@ public class BoardController {
     }
 
     @PostMapping
+    @Operation(summary = "글등록", description = "<h1>글 등록 가능해요</h1> <br> ୧(๑•̀ᗝ•́)૭")
     public int postInsBoard(@RequestBody BoardInsDto dto) {
         return service.insBoard(dto);
     }
