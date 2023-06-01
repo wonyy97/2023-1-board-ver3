@@ -51,7 +51,7 @@ public class CmtService {
     }
 
     public int selLastCmt(int row) {
-        int count = mapper.selLastCmt(row);
+        int count = mapper.selLastCmt();
         return (int)Math.ceil(count/ row);
     }
 
