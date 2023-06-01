@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/board/cmt")
+@RequestMapping("/board")
 public class CmtController {
     private final CmtService service;
 
@@ -20,12 +20,12 @@ public class CmtController {
         this.service = service;
     }
 
-    @PostMapping
+    @PostMapping("/cmt")
     public int postCmt(@RequestBody CmtInsDto dto) { //CmtInsDto dto swagger 때문에 사용된다.
         return service.insCmt(dto);
     }
 
-    @GetMapping("/{iboard}")
+    @GetMapping("/{iboard}/cmt")
     public List<CmtSelPageVo> selPageCmt(@PathVariable int iboard ,@RequestParam(defaultValue = "1") int page
                                             ,@RequestParam(defaultValue = "5") int row) {
         CmtSelPageDto dto = new CmtSelPageDto();
