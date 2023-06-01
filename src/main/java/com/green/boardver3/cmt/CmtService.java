@@ -34,8 +34,8 @@ public class CmtService {
     }
 
     public List<CmtSelPageVo> selPageCmt(CmtSelPageDto dto) {
-        dto.setStartIdx((dto.getPage() - 1));
-//        dto.setRow(ROW);
+        int startIdx = ((dto.getPage() - 1) * dto.getRow());
+        dto.setStartIdx(startIdx);
         return mapper.selPageCmt(dto);
     }
 
