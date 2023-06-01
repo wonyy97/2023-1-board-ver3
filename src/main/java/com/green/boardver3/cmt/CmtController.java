@@ -26,11 +26,12 @@ public class CmtController {
     }
 
     @GetMapping("/{iboard}")
-    public List<CmtSelPageVo> selPageCmt(@RequestParam(defaultValue = "1") int page
-            , @RequestParam(defaultValue = "5") int row) {
+    public List<CmtSelPageVo> selPageCmt(@PathVariable int iboard ,@RequestParam(defaultValue = "1") int page
+                                            ,@RequestParam(defaultValue = "5") int row) {
         CmtSelPageDto dto = new CmtSelPageDto();
         dto.setPage(page);
         dto.setRow(row);
+        dto.setIboard(iboard);
         return service.selPageCmt(dto);
     }
 }
