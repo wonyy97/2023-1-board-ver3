@@ -40,7 +40,7 @@ public class CmtService {
         int isMore = 0;
 
 
-        if( maxpage < dto.getRow()) {
+        if( maxpage > dto.getRow()) {
             isMore = 1;
         }
 
@@ -51,7 +51,7 @@ public class CmtService {
     }
 
     public int selLastCmt(int row) {
-        int count = mapper.selLastCmt();
+        int count = mapper.selLastCmt(row);
         return (int)Math.ceil(count/ row);
     }
 
