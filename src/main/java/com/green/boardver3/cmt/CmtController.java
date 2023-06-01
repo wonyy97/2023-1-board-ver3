@@ -20,14 +20,19 @@ public class CmtController {
         this.service = service;
     }
 
-    @PostMapping("/cmt")
-    public int postCmt(@RequestBody CmtInsDto dto) { //CmtInsDto dto swagger 때문에 사용된다.
-        return service.insCmt(dto);
+    @PostMapping("/{iboard}")
+    public int postCmt(@PathVariable int iboard
+            , @RequestBody CmtInsDto dto) { //CmtInsDto dto swagger 때문에 사용된다.
+        CmtEntity entity = new CmtEntity();
+        entity.setIboard(iboard);
+        entity.setIuser(dto.getIuser());
+        entity.setCtnt(dto.getCtnt());
+        return service.insCmt(entity);
     }
 
     @GetMapping("/{iboard}/cmt")
-    public List<CmtSelPageVo> selPageCmt(@PathVariable int iboard ,@RequestParam(defaultValue = "1") int page
-                                            ,@RequestParam(defaultValue = "5") int row) {
+    public List<CmtSelPageVo> selPageCmt(@PathVariable int iboard, @RequestParam(defaultValue = "1") int page
+            , @RequestParam(defaultValue = "5") int row) {
         CmtSelPageDto dto = new CmtSelPageDto();
         dto.setPage(page);
         dto.setRow(row);

@@ -1,5 +1,7 @@
 package com.green.boardver3.cmt;
 
+import com.green.boardver3.board.model.BoardEntity;
+import com.green.boardver3.board.model.BoardInsDto;
 import com.green.boardver3.cmt.model.CmtEntity;
 import com.green.boardver3.cmt.model.CmtInsDto;
 import com.green.boardver3.cmt.model.CmtSelPageDto;
@@ -19,12 +21,7 @@ public class CmtService {
         this.mapper = mapper;
     }
 
-    public int insCmt(CmtInsDto dto) {
-        CmtEntity entity = new CmtEntity();
-        entity.setIboard(dto.getIboard());
-        entity.setIuser(dto.getIuser());
-        entity.setCtnt(dto.getCtnt());
-
+    public int insCmt(CmtEntity entity) {
         try{
             int result = mapper.insCmt(entity);
             if(result == 1) {
