@@ -15,7 +15,7 @@ public class CmtService {
     }
 
     public int insCmt(CmtInsDto dto) {
-        CmtEntity entity = new CmtEntity(); //Entity로 갈아탄 이유 xml파일 use뭐시기뭐시기 어쩌고저쩌고 문구 때문
+        CmtEntity entity = new CmtEntity();
         entity.setIboard(dto.getIboard());
         entity.setIuser(dto.getIuser());
         entity.setCtnt(dto.getCtnt());
