@@ -21,5 +21,11 @@
         WHERE A.iboard = #{iboard}
         LIMIT #{startIdx}, #{row}
     </select>
+    
+    <delete id="delCmt">
+        DELETE FROM t_board_cmt
+        WHERE iboardCmt = #{iboardCmt}
+        AND iuser = #{iuser}
+    </delete>
 
 </mapper>
