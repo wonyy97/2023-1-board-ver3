@@ -46,4 +46,15 @@ public class CmtController {
         dto.setIboardCmt(iboardCmt);
         return service.delCmt(dto);
     }
+
+    @PutMapping("/cmt/{iboardCmt}")
+    public int updCmt(@PathVariable int iboardCmt
+                    ,@RequestParam int iuser
+                    ,@RequestParam String ctnt) {
+        CmtUpdDto dto = new CmtUpdDto();
+        dto.setIboardCmt(iboardCmt);
+        dto.setIuser(iuser);
+        dto.setCtnt(ctnt);
+        return service.updCmt(dto);
+    }
 }
