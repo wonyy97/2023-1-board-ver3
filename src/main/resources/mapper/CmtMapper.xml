@@ -37,8 +37,9 @@
     </delete>
 
     <select id="selLastCmt">
-        SELECT COUNT(iboard_cmt) max
+        SELECT COUNT(iboard_cmt)
         FROM t_board_cmt
+        WHERE iboard = #{iboard}
     </select>
 
 
