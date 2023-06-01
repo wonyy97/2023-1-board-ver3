@@ -21,6 +21,14 @@
         WHERE A.iboard = #{iboard}
         LIMIT #{startIdx}, #{row}
     </select>
+
+    <update id="updCmt">
+        UPDATE t_board_cmt
+        SET iuser = #{iuser}
+        , ctnt = #{ctnt}
+        WHERE iuser = #{iuser}
+        AND iboard_cmt = #{iboardCmt}
+    </update>
     
     <delete id="delCmt">
         DELETE FROM t_board_cmt
