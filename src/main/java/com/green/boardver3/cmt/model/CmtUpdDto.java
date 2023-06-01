@@ -6,5 +6,4 @@ import lombok.Data;
 public class CmtUpdDto {
     private int iuser;
     private String ctnt;
-    private int iboardCmt;
 }

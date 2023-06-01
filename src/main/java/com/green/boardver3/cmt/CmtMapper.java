@@ -9,6 +9,6 @@ import java.util.List;
 public interface CmtMapper {
     int insCmt(CmtEntity entity);
     List<CmtSelPageVo> selPageCmt(CmtSelPageDto dto);
+    int updCmt(CmtEntity entity);
     int delCmt(CmtDelDto dto);
-    int updCmt(CmtUpdDto dto);
 }

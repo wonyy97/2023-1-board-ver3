@@ -24,10 +24,10 @@
 
     <update id="updCmt">
         UPDATE t_board_cmt
-        SET iuser = #{iuser}
-        , ctnt = #{ctnt}
-        WHERE iuser = #{iuser}
-        AND iboard_cmt = #{iboardCmt}
+        SET ctnt = #{ctnt}
+        , updated_at = current_timestamp()
+        WHERE iboard_cmt = #{iboardCmt}
+        AND iuser = #{iuser}
     </update>
     
     <delete id="delCmt">

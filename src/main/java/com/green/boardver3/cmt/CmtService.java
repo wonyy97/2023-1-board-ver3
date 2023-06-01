@@ -30,18 +30,27 @@ public class CmtService {
         return 0;
     }
 
-    public List<CmtSelPageVo> selPageCmt(CmtSelPageDto dto) {
+    public CmtRes selPageCmt(CmtSelPageDto dto) {
         int startIdx = ((dto.getPage() - 1) * dto.getRow());
         dto.setStartIdx(startIdx);
-        return mapper.selPageCmt(dto);
+        List<CmtSelPageVo> list = mapper.selPageCmt(dto);
+
+        int isMore = 0;
+
+        return CmtRes.builder()
+                    .list(list)
+                    .isMore(isMore)
+                    .build();
     }
+
+    public int updCmt(CmtEntity entity) {
+        return mapper.updCmt(entity);
+    }
+
 
     public int delCmt(CmtDelDto dto) {
         return mapper.delCmt(dto);
     }
 
-    public int updCmt(CmtUpdDto dto) {
-        return mapper.updCmt(dto);
-    }
 
 }
