@@ -11,4 +11,5 @@ public interface CmtMapper {
     List<CmtSelPageVo> selPageCmt(CmtSelPageDto dto);
     int updCmt(CmtEntity entity);
     int delCmt(CmtDelDto dto);
+    int selLastCmt(int row);
 }

@@ -35,12 +35,24 @@ public class CmtService {
         dto.setStartIdx(startIdx);
         List<CmtSelPageVo> list = mapper.selPageCmt(dto);
 
+        int count = mapper.selLastCmt(dto.getRow());
+        int maxpage = (int)Math.ceil(count / dto.getRow());
         int isMore = 0;
+
+
+        if( maxpage < dto.getRow()) {
+            isMore = 1;
+        }
 
         return CmtRes.builder()
                     .list(list)
                     .isMore(isMore)
                     .build();
+    }
+
+    public int selLastCmt(int row) {
+        int count = mapper.selLastCmt(row);
+        return (int)Math.ceil(count/ row);
     }
 
     public int updCmt(CmtEntity entity) {

@@ -36,4 +36,10 @@
         AND iuser = #{iuser}
     </delete>
 
+    <select id="selLastCmt">
+        SELECT COUNT(iboard_cmt) max
+        FROM t_board_cmt
+    </select>
+
+
 </mapper>

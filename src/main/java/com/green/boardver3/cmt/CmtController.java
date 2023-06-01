@@ -2,6 +2,7 @@ package com.green.boardver3.cmt;
 
 import com.green.boardver3.board.model.BoardSelDto;
 import com.green.boardver3.cmt.model.*;
+import jakarta.validation.constraints.Min;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +30,7 @@ public class CmtController {
 
     @GetMapping("/{iboard}/cmt")
     public CmtRes selPageCmt(@PathVariable int iboard
-                                        , @RequestParam int page
+                                        , @RequestParam @Min(value = 1)int page
                                         , @RequestParam(defaultValue = "5") int row) {
         CmtSelPageDto dto = new CmtSelPageDto();
         dto.setPage(page);
