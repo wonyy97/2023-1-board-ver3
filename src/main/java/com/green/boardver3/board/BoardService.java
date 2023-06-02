@@ -1,18 +1,23 @@
 package com.green.boardver3.board;
 
 import com.green.boardver3.board.model.*;
+import com.green.boardver3.cmt.CmtMapper;
+import com.green.boardver3.cmt.model.CmtDelDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 public class BoardService {
     private final BoardMapper mapper;
+    private final CmtMapper cmtMapper;
 
     @Autowired
-    public BoardService(BoardMapper mapper) {
+    public BoardService(BoardMapper mapper, CmtMapper cmtMapper) {
         this.mapper = mapper;
+        this.cmtMapper = cmtMapper;
     }
 
     public int insBoard(BoardInsDto dto) {
@@ -41,8 +46,23 @@ public class BoardService {
         return mapper.selBoardById(dto);
     }
 
-    public int delBoard(BoardDelDto dto) {
-        return mapper.delBoard(dto);
+    @Transactional(rollbackFor = Exception.class)
+    public int delBoard(BoardDelDto dto) throws Exception {
+        // 그 글에 달려있는 댓글을 전부 삭제해야 함.
+
+        CmtDelDto delDto = new CmtDelDto();
+        delDto.setIboard(dto.getIboard());
+        cmtMapper.delCmt(delDto);
+
+        int result = 0;
+        result = mapper.delBoard(dto);
+        if(result == 0) {
+            throw new Exception("삭제 권한 없음");
+        }
+
+        return result;
+
+
     }
 
     public int updBoard(BoardUpdDto dto) {

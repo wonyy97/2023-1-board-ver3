@@ -47,7 +47,7 @@ public class BoardController {
     }
 
     @DeleteMapping("/{iboard}")
-    public int deleteBoard(@RequestParam int iboard, @RequestParam int iuser) {
+    public int deleteBoard(@RequestParam int iboard, @RequestParam int iuser) throws Exception {
         BoardDelDto dto = new BoardDelDto();
         dto.setIboard(iboard);
         dto.setIuser(iuser);
