@@ -46,11 +46,17 @@ public class BoardController {
         return service.selboardByid(dto);
     }
 
-    @DeleteMapping("/{iboard}")
-    public int deleteBoard(@RequestParam int iboard, @RequestParam int iuser) throws Exception {
-        BoardDelDto dto = new BoardDelDto();
-        dto.setIboard(iboard);
-        dto.setIuser(iuser);
+//    @DeleteMapping("/{iboard}")
+//    public int deleteBoard(@RequestParam int iboard, @RequestParam int iuser) throws Exception {
+//        BoardDelDto dto = new BoardDelDto();
+//        dto.setIboard(iboard);
+//        dto.setIuser(iuser);
+//        return service.delBoard(dto);
+//    }
+
+
+    @DeleteMapping
+    public int delBoard(@RequestBody BoardDelDto dto) throws Exception {
         return service.delBoard(dto);
     }
 
