@@ -9,4 +9,5 @@ public interface UserMapper {
     UserLoginVo selUserByUid(UserLoginDto dto);
     int updUserPw(UserPatchPwDto dto);
     int updUserPic(UserPicDto pic);
+
 }

@@ -31,4 +31,5 @@
         SET main_pic = #{mainPic}
         WHERE iuser = #{iuser}
     </update>
+
 </mapper>
