@@ -4,7 +4,9 @@ import com.green.boardver3.board.model.*;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.constraints.Min;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -65,5 +67,8 @@ public class BoardController {
     public int updateBoard(@RequestBody BoardUpdDto dto) {
         return service.updBoard(dto);
     }
+
+
+
 
 }
