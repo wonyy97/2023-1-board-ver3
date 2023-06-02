@@ -90,7 +90,7 @@ public class UserService {
 
         try {
             pic.transferTo(file);
-
+            dto.setMainPic(randomFileNm);
             return mapper.updUserPic(dto);
 
         } catch (IOException e) {
