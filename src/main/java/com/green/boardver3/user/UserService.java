@@ -70,13 +70,12 @@ public class UserService {
     public int updUserPic(MultipartFile pic, UserPicDto dto) {
         // user/pk/uuid.jpg
         String dicPath = String.format("%s/user/%d"
-                , fileDir, dto.getIuser());  //D://download/board3/user/1
+                , fileDir, dto.getIuser());  //D://download/board3/user/1   // e.g. iuser=1 경우 D:download/board3/user/1
 
         File dic = new File(dicPath);
         if(!dic.exists()) {     //해당하는 폴더가 있는지 확인 가능
             dic.mkdirs();
         }
-//String uuid = UUID.randomUUID()
         return 0;
     }
 }
