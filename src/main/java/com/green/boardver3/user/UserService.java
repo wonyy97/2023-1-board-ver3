@@ -81,8 +81,9 @@ public class UserService {
         }
 
         String fileName = pic.getOriginalFilename();
-        String radom = FileUtils.makeRandomFileNm(fileName);
-        String filePath = dicPath + dto.getIuser() + radom;
+        String randomFileNm = FileUtils.makeRandomFileNm(fileName);
+        String filePath = dicPath+ "/" +randomFileNm;
+//        String filePath = String.format("%s/%s",dicPath,randomFileNm);
 
 
         File file = new File(filePath);
