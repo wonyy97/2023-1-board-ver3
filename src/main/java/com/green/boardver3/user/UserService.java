@@ -82,7 +82,7 @@ public class UserService {
 
         String fileName = pic.getOriginalFilename();
         String radom = FileUtils.makeRandomFileNm(fileName);
-        String filePath = dicPath + dto.getIuser() + radom;
+        String filePath = fileDir + radom;
 
 
         File file = new File(filePath);
