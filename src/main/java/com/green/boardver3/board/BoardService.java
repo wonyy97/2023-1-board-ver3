@@ -1,9 +1,10 @@
 package com.green.boardver3.board;
 
 import com.green.boardver3.board.model.*;
-import com.green.boardver3.cmt.CmtMapper;
 import com.green.boardver3.cmt.CmtService;
 import com.green.boardver3.cmt.model.CmtDelDto;
+import com.green.boardver3.cmt.model.CmtRes;
+import com.green.boardver3.cmt.model.CmtSelPageDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +15,8 @@ import java.util.List;
 public class BoardService {
     private final BoardMapper mapper;
     private final CmtService cmtService;
+    private final int ROW = 5;
+
 
     @Autowired
     public BoardService(BoardMapper mapper, CmtService cmtService) {
@@ -27,7 +30,7 @@ public class BoardService {
         entity.setCtnt(dto.getCtnt());
         entity.setIuser(dto.getIuser());
         int result = mapper.insBoard(entity);
-        if(result == 1) {
+        if (result == 1) {
             return entity.getIboard();
         }
         return result;
@@ -40,11 +43,21 @@ public class BoardService {
 
     public int selLastBoard(int row) {
         double count = mapper.selLastBoard(row);
-        return (int)Math.ceil(count/ row);
+        return (int) Math.ceil(count / row);
     }
 
-    public BoardDetailVo selboardByid(BoardSelDto dto) {
-        return mapper.selBoardById(dto);
+    public BoardCmtDetailVo selboardByid(BoardSelDto dto) {
+        BoardDetailVo vo = mapper.selBoardById(dto);
+        CmtSelPageDto cmtDto = new CmtSelPageDto();
+        cmtDto.setPage(dto.getPage());
+        cmtDto.setIboard(dto.getIboard());
+        cmtDto.setRow(ROW);
+        CmtRes cmtRes = cmtService.selPageCmt(cmtDto);
+        return BoardCmtDetailVo.builder()
+                .board(vo)
+                .cmt(cmtRes)
+                .build();
+
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -57,7 +70,7 @@ public class BoardService {
 
         int result = 0;
         result = mapper.delBoard(dto);
-        if(result == 0) {
+        if (result == 0) {
             throw new Exception("삭제 권한 없음");
         }
 

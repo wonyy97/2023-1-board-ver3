@@ -40,8 +40,9 @@ public class BoardController {
     }
 
     @GetMapping("/{iboard}")
-    public BoardDetailVo getdetailBoard(@PathVariable int iboard) {
+    public BoardCmtDetailVo getdetailBoard(@PathVariable int iboard) {
         BoardSelDto dto = new BoardSelDto();
+        dto.setPage(1);
         dto.setIboard(iboard);
         return service.selboardByid(dto);
     }

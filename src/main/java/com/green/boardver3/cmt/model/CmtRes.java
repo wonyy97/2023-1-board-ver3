@@ -2,6 +2,7 @@ package com.green.boardver3.cmt.model;
 
 import lombok.Builder;
 import lombok.Getter;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
