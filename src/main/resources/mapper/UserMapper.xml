@@ -26,4 +26,9 @@
     </update>
 
 
+    <update id="updUserPic">
+        UPDATE t_user
+        SET main_pic = #{mainPic}
+        WHERE iuser = #{iuser}
+    </update>
 </mapper>
