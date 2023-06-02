@@ -3,6 +3,7 @@ package com.green.boardver3.user;
 import com.green.boardver3.user.model.UserInsDto;
 import com.green.boardver3.user.model.UserLoginDto;
 import com.green.boardver3.user.model.UserPatchPwDto;
+import com.green.boardver3.user.model.UserPicDto;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -51,7 +52,9 @@ public class UserController {
 
     @PatchMapping(name="/pic", consumes={MediaType.MULTIPART_FORM_DATA_VALUE})
     public int patchPicUser(@RequestPart MultipartFile pic, @RequestParam int iuser) {
-        return 0;
+        UserPicDto dto = new UserPicDto();
+        dto.setIuser(iuser);
+        return service.updUserPic(pic,dto);
     }
 
 }

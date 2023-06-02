@@ -3,7 +3,7 @@ package com.green.boardver3.user.model;
 import lombok.Data;
 
 @Data
-public class UserPic {
+public class UserPicDto {
     private int iuser;
     private String mainPic;
 }
