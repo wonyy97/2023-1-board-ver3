@@ -47,12 +47,15 @@ public class BoardService {
     }
 
     public BoardCmtDetailVo selboardByid(BoardSelDto dto) {
-        BoardDetailVo vo = mapper.selBoardById(dto);
+        BoardDetailVo vo = mapper.selBoardById(dto); //원래 게시글 디테일
+
         CmtSelPageDto cmtDto = new CmtSelPageDto();
         cmtDto.setPage(dto.getPage());
         cmtDto.setIboard(dto.getIboard());
         cmtDto.setRow(ROW);
+
         CmtRes cmtRes = cmtService.selPageCmt(cmtDto);
+        
         return BoardCmtDetailVo.builder()
                 .board(vo)
                 .cmt(cmtRes)
