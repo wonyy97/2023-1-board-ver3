@@ -2,12 +2,14 @@ package com.green.boardver3.user;
 
 import com.green.boardver3.user.model.*;
 import com.green.boardver3.utils.CommonUtils;
+import com.green.boardver3.utils.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.UUID;
 
 //최대한 자바단에서 다 잡기
@@ -26,11 +28,12 @@ public class UserService {
         this.mapper = mapper;
         this.commonUtils = commonUtils;
     }
+
     public int insUser(UserInsDto dto) {
         //성별 항상 대문자로 받기
         char gender = Character.toUpperCase(dto.getGender());
         // 성별로 m, f 가 아닌 다른게 들어왔을 때 -1날림
-        if(!(gender == 'M' || gender == 'F')) {
+        if (!(gender == 'M' || gender == 'F')) {
             return -1;
         }
         dto.setGender(gender);
@@ -49,12 +52,12 @@ public class UserService {
 
     public int login(UserLoginDto dto) {
         UserLoginVo vo = mapper.selUserByUid(dto);
-        if(vo == null) {
+        if (vo == null) {
             return 2;
         }
 
         String pw = commonUtils.encodeSha256(dto.getUpw());
-        if(vo.getUpw().equals(pw)){
+        if (vo.getUpw().equals(pw)) {
             return 1;
         }
         return 3;
@@ -72,16 +75,32 @@ public class UserService {
         String dicPath = String.format("%s/user/%d"
                 , fileDir, dto.getIuser());  //D://download/board3/user/1   // e.g. iuser=1 경우 D:download/board3/user/1
 
-
         File dic = new File(dicPath);
-        if(!dic.exists()) {     //해당하는 폴더가 있는지 확인 가능
+        if (!dic.exists()) {     //해당하는 폴더가 있는지 확인 가능
             dic.mkdirs();
         }
-        return 0;
+
+        String fileName = pic.getOriginalFilename();
+        String radom = FileUtils.makeRandomFileNm(fileName);
+        String filePath = dicPath + dto.getIuser() + radom;
+
+
+        File file = new File(filePath);
+
+        try {
+            pic.transferTo(file);
+
+            return mapper.updUserPic(dto);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return -1;
+
     }
+
 }
-
-
 
 
 

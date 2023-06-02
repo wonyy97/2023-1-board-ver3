@@ -20,9 +20,9 @@ public class FileUtils {
         String uuid = UUID.randomUUID().toString();
         String ext = getExt(fileNm);
 
-        String FullName = uuid+ext;
+        String fullName = uuid+ext;
 
-        return FullName;
+        return fullName;
     }
 
 
