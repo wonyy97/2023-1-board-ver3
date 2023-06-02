@@ -27,13 +27,13 @@ public class FileUtils {
 
 
 
-    public static void main(String[] args) {
-        String fileNm = "124.342243.3434.jpg";
-
-        String result = getFileNm(fileNm);
-        System.out.println(result);
-
-        String resultRandomFileNm = makeRandomFileNm(fileNm);
-        System.out.println(resultRandomFileNm);
-    }
+//    public static void main(String[] args) {
+//        String fileNm = "124.34343.3434.jpg";
+//
+//        String result = getFileNm(fileNm);
+//        System.out.println(result);
+//
+//        String resultRandomFileNm = makeRandomFileNm(fileNm);
+//        System.out.println(resultRandomFileNm);
+//    }
 }
