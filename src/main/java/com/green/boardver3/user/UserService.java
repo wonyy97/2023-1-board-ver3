@@ -72,34 +72,61 @@ public class UserService {
 
     public int updUserPic(MultipartFile pic, UserPicDto dto) {
         // user/pk/uuid.jpg
-        String dicPath = String.format("%s/user/%d"
-                , fileDir, dto.getIuser());  //D://download/board3/user/1   // e.g. iuser=1 경우 D:download/board3/user/1
+//        String dicPath = String.format("%s/user/%d"
+//                , fileDir, dto.getIuser());  //D://download/board3/user/1   // e.g. iuser=1 경우 D:download/board3/user/1
+
+        String centerPath = String.format("user/%d", dto.getIuser());
+        String dicPath = String.format("%s/%s", fileDir, centerPath);
 
         File dic = new File(dicPath);
         if (!dic.exists()) {     //해당하는 폴더가 있는지 확인 가능
             dic.mkdirs();
         }
 
-        String fileName = pic.getOriginalFilename();
-        String randomFileNm = FileUtils.makeRandomFileNm(fileName);
-        String filePath = dicPath+ "/" +randomFileNm;
-//        String filePath = String.format("%s/%s",dicPath,randomFileNm);
-
-
-        File file = new File(filePath);
-
+        String originFileName = pic.getOriginalFilename();
+        String savedFileName = FileUtils.makeRandomFileNm(originFileName);
+        String savedFilePath = String.format("%s/%s", centerPath, savedFileName);
+        String targetPath = String.format("%s/%s", fileDir, savedFilePath);
+        File target = new File(targetPath);
         try {
-            pic.transferTo(file);
-            dto.setMainPic(randomFileNm);
-            return mapper.updUserPic(dto);
-
-        } catch (IOException e) {
-            e.printStackTrace();
+            pic.transferTo(target);
+        }catch (Exception e) {
+            return 0;
         }
-
-        return -1;
-
+        dto.setMainPic(savedFilePath);
+        try {
+            int result = mapper.updUserPic(dto);
+            if(result == 0) {
+                throw new Exception("프로필 사진을 등록할 수 없습니다.");
+            }
+        } catch (Exception e) {
+            //파일 삭제
+            target.delete();
+            return 0;
+        }
+        return 1;
     }
+
+//        String fileName = pic.getOriginalFilename();
+//        String randomFileNm = FileUtils.makeRandomFileNm(fileName);
+//        String filePath = dicPath+ "/" +randomFileNm;
+////        String filePath = String.format("%s/%s",dicPath,randomFileNm);
+//
+//
+//        File file = new File(filePath);
+//
+//        try {
+//            pic.transferTo(file);
+//            dto.setMainPic(randomFileNm);
+//            return mapper.updUserPic(dto);
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return -1;
+//
+//    }
 
 }
 
