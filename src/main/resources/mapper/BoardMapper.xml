@@ -50,10 +50,10 @@
         AND iuser = #{iuser}
     </delete>
 
-    <select id="writer">
-        SELECT iuser
-        FROM t_board
-        WHERE iboard = #{iboard}
-    </select>
+<!--    <select id="writer">-->
+<!--        SELECT iuser-->
+<!--        FROM t_board-->
+<!--        WHERE iboard = 샵{iboard}-->
+<!--    </select>-->
 
 </mapper>
