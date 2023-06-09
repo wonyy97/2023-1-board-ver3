@@ -35,7 +35,14 @@
         WHERE iboard = #{iboard}
     </select>
 
-
+    <update id="updBoard">
+        UPDATE t_board
+        SET title = #{title}
+        , ctnt = #{ctnt}
+        , updated_at = current_timestamp()
+        WHERE iboard = #{iboard}
+        AND iuser = #{iuser}
+    </update>
 
     <delete id="delBoard">
         DELETE FROM t_board
