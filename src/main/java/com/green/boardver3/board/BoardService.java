@@ -43,7 +43,7 @@ public class BoardService {
 
     public int selLastBoard(int row) {
         double count = mapper.selLastBoard(row);
-        return (int) Math.ceil(count / row);
+        return (int)Math.ceil(count / row);
     }
 
     public BoardCmtDetailVo selboardByid(BoardSelDto dto) {
